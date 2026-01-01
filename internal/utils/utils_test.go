@@ -1,54 +1,71 @@
 package utils
 
 import (
-	"strings"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
+	"yard-backend/internal/config"
 )
 
-func TestParseItemTypesHelper(t *testing.T) {
-	tests := []struct {
-		name     string
-		input    string
-		expected []string
-	}{
-		{
-			name:     "comma separated",
-			input:    "SWORD,AXE,BOW",
-			expected: []string{"SWORD", "AXE", "BOW"},
-		},
-		{
-			name:     "with spaces",
-			input:    "SWORD, AXE, BOW",
-			expected: []string{"SWORD", "AXE", "BOW"},
-		},
-		{
-			name:     "single item",
-			input:    "SWORD",
-			expected: []string{"SWORD"},
-		},
-		{
-			name:     "empty string",
-			input:    "",
-			expected: []string{""},
-		},
+func TestExtractObtainingFromLore_WhenLoreContainsObtained_ReturnsObtainingInfo(t *testing.T) {
+	// Arrange
+	lore := []string{
+		"§7Obtained from:",
+		"§7Mining",
 	}
 
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			result := parseItemTypesHelper(tt.input)
-			assert.Equal(t, tt.expected, result)
-		})
-	}
+	// Act
+	result := ExtractObtainingFromLore(lore)
+
+	// Assert
+	assert.Equal(t, "Obtained from:", result)
 }
 
-func parseItemTypesHelper(itemTypes string) []string {
-	parts := strings.Split(itemTypes, ",")
-	result := make([]string, len(parts))
-	for i, part := range parts {
-		result[i] = strings.TrimSpace(strings.ToUpper(part))
-	}
-	return result
+func TestExtractObtainingFromLore_WhenLoreEmpty_ReturnsEmpty(t *testing.T) {
+	// Arrange
+	lore := []string{}
+
+	// Act
+	result := ExtractObtainingFromLore(lore)
+
+	// Assert
+	assert.Empty(t, result)
 }
 
+func TestExtractMiningLevelFromLore_WhenLoreContainsMiningLevel_ReturnsLevel(t *testing.T) {
+	// Arrange
+	lore := []string{
+		"§7Mining Skill Level §a50!",
+	}
+
+	// Act
+	result := ExtractMiningLevelFromLore(lore)
+
+	// Assert
+	assert.Contains(t, result, "Mining Skill Level")
+	assert.Contains(t, result, "50")
+}
+
+func TestRateLimitWait_WhenElapsedTimeLessThanMinDelay_Waits(t *testing.T) {
+	// Arrange
+	originalLastRequestTime := config.LastRequestTime
+	originalMinRequestDelay := config.MinRequestDelay
+	defer func() {
+		config.LastRequestTime = originalLastRequestTime
+		config.MinRequestDelay = originalMinRequestDelay
+	}()
+
+	config.MinRequestDelay = 50 * time.Millisecond
+	config.RateLimiterMutex.Lock()
+	config.LastRequestTime = time.Now().Add(-10 * time.Millisecond)
+	config.RateLimiterMutex.Unlock()
+
+	// Act
+	start := time.Now()
+	RateLimitWait()
+	elapsed := time.Since(start)
+
+	// Assert
+	assert.GreaterOrEqual(t, elapsed, 35*time.Millisecond)
+}
