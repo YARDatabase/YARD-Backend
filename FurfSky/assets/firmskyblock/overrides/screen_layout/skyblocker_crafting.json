@@ -1,0 +1,45 @@
+{
+  "predicates": {
+    "label": {
+      "regex": "InventoryScreenSkyblocker"
+    }
+  },
+  "background": {
+    "texture": "firmskyblock:textures/screen_layout/crafting.png",
+    "x": -25,
+    "y": 0,
+    "width": 204,
+    "height": 166
+  },
+  "containerTitle": {
+    "x": -5000,
+    "y": -5000
+  },
+  "slots": [
+    {
+      "index": 0,
+      "x": 154,
+      "y": 28
+    },
+    {
+      "index": 1,
+      "x": 98,
+      "y": 18
+    },
+    {
+      "index": 2,
+      "x": 116,
+      "y": 18
+    },
+    {
+      "index": 3,
+      "x": 98,
+      "y": 36
+    },
+    {
+      "index": 4,
+      "x": 116,
+      "y": 36
+    }
+  ]
+}

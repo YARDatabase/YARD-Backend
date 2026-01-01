@@ -1,0 +1,10 @@
+{
+  "predicates": {
+    "label": {
+      "regex": "CraftingTableSkyblocker"
+    }
+  },
+  "containerTitle": {
+    "replace": "Craft Item"
+  }
+}
