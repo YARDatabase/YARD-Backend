@@ -103,7 +103,7 @@ func FetchAndStoreReforgeStones(force bool) {
 				lastUpdatedTime := time.Unix(timestamp/1000, 0)
 				timeSinceUpdate := time.Since(lastUpdatedTime)
 				
-				if timeSinceUpdate < 6*time.Hour {
+				if timeSinceUpdate < 15*time.Minute {
 					ids, _ := config.RDB.SMembers(config.Ctx, "reforge_stones:ids").Result()
 					if len(ids) > 0 {
 						log.Printf("Data is fresh (updated %v ago, %d stones cached). Skipping fetch.", 
