@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -12,6 +13,7 @@ import (
 	"github.com/gorilla/mux"
 	"yard-backend/internal/config"
 	"yard-backend/internal/models"
+	"yard-backend/internal/services"
 )
 
 // sets cors headers to allow cross origin requests from configured origin
@@ -135,5 +137,47 @@ func HandleItemImage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	http.Error(w, "Item texture not found", http.StatusNotFound)
+}
+
+// handles requests for all reforges returning merged data from reforges.json and reforgestones.json
+func HandleReforges(w http.ResponseWriter, r *http.Request) {
+	EnableCORS(w, r)
+	w.Header().Set("Content-Type", "application/json")
+
+	if r.Method == "OPTIONS" {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+
+	reforges := services.GetAllReforges()
+	
+	// sort reforges alphabetically by name
+	sort.Slice(reforges, func(i, j int) bool {
+		return reforges[i].ReforgeName < reforges[j].ReforgeName
+	})
+
+	// get last updated time from redis if available
+	var lastUpdated time.Time
+	if config.RDB != nil {
+		lastUpdatedStr, err := config.RDB.Get(config.Ctx, "reforge_stones:last_updated").Result()
+		if err == nil && lastUpdatedStr != "" {
+			if timestamp, err := strconv.ParseInt(lastUpdatedStr, 10, 64); err == nil {
+				lastUpdated = time.Unix(timestamp/1000, 0)
+			}
+		}
+	}
+	
+	if lastUpdated.IsZero() {
+		lastUpdated = time.Now()
+	}
+
+	response := models.ReforgesResponse{
+		Success:     true,
+		Count:       len(reforges),
+		LastUpdated: lastUpdated,
+		Reforges:    reforges,
+	}
+
+	json.NewEncoder(w).Encode(response)
 }
 

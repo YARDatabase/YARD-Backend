@@ -82,3 +82,26 @@ type ReforgeStonesResponse struct {
 	ReforgeStones []Item   `json:"reforgeStones"`
 }
 
+// reforge represents a complete reforge from the neu reforges.json file
+type Reforge struct {
+	ReforgeName      string                  `json:"reforge_name"`
+	ItemTypes        string                  `json:"item_types"`
+	RequiredRarities []string                `json:"required_rarities"`
+	ReforgeStats     map[string]ReforgeStats `json:"reforge_stats"`
+	ReforgeAbility   interface{}             `json:"reforge_ability,omitempty"`
+	ReforgeCosts     map[string]int          `json:"reforge_costs,omitempty"`
+	Source           string                  `json:"source"`
+	StoneID          string                  `json:"stone_id,omitempty"`
+	StoneName        string                  `json:"stone_name,omitempty"`
+	StoneTier        string                  `json:"stone_tier,omitempty"`
+	StonePrice       *int64                  `json:"stone_price,omitempty"`
+}
+
+// reforgesresponse is the api response containing all reforges
+type ReforgesResponse struct {
+	Success     bool      `json:"success"`
+	Count       int       `json:"count"`
+	LastUpdated time.Time `json:"lastUpdated"`
+	Reforges    []Reforge `json:"reforges"`
+}
+

@@ -26,6 +26,9 @@ var (
 	NEUReforgeStones map[string]interface{}
 	NEUReforgeStonesMutex sync.RWMutex
 	
+	NEUReforges map[string]interface{}
+	NEUReforgesMutex sync.RWMutex
+	
 	APIRateLimitMutex sync.Mutex
 	APIRateLimitMap   = make(map[string]time.Time)
 	APIRateLimitWindow = 1 * time.Minute

@@ -22,11 +22,16 @@ func main() {
 		log.Printf("Warning: Failed to load NEU reforge stones: %v", err)
 	}
 	
+	if err := services.LoadNEUReforges(); err != nil {
+		log.Printf("Warning: Failed to load NEU reforges: %v", err)
+	}
+	
 	services.StartScheduler()
 
 	r := mux.NewRouter()
 	r.HandleFunc("/health", handlers.HandleHealth).Methods("GET")
 	r.HandleFunc("/api/reforge-stones", middleware.RateLimitMiddleware(handlers.HandleReforgeStones)).Methods("GET")
+	r.HandleFunc("/api/reforges", middleware.RateLimitMiddleware(handlers.HandleReforges)).Methods("GET")
 	r.HandleFunc("/api/item/{itemId}", middleware.RateLimitMiddleware(handlers.HandleItemImage)).Methods("GET")
 	r.HandleFunc("/api/item-data/{itemId}", middleware.RateLimitMiddleware(handlers.HandleItemImageByData)).Methods("GET")
 

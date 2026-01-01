@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"yard-backend/internal/config"
 	"yard-backend/internal/models"
@@ -167,5 +168,238 @@ func GetReforgeEffectForStone(itemID string) *models.ReforgeEffect {
 	}
 	
 	return effect
+}
+
+// loads all reforge definitions from the notenoughupdates repository reforges.json file
+func LoadNEUReforges() error {
+	config.NEUReforgesMutex.Lock()
+	defer config.NEUReforgesMutex.Unlock()
+	
+	path := fmt.Sprintf("%s/constants/reforges.json", config.NEURepoPath)
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return fmt.Errorf("failed to read reforges.json: %w", err)
+	}
+	
+	var reforges map[string]interface{}
+	if err := json.Unmarshal(data, &reforges); err != nil {
+		return fmt.Errorf("failed to parse reforges.json: %w", err)
+	}
+	
+	config.NEUReforges = reforges
+	log.Printf("Loaded %d reforge definitions from NEU reforges.json", len(config.NEUReforges))
+	return nil
+}
+
+// gets all reforges merging data from reforges.json and reforgestones.json
+func GetAllReforges() []models.Reforge {
+	config.NEUReforgesMutex.RLock()
+	defer config.NEUReforgesMutex.RUnlock()
+	
+	config.NEUReforgeStonesMutex.RLock()
+	defer config.NEUReforgeStonesMutex.RUnlock()
+	
+	reforgeMap := make(map[string]*models.Reforge)
+	
+	// first load all reforges from reforges.json (blacksmith reforges)
+	for reforgeName, reforgeData := range config.NEUReforges {
+		reforgeDataMap, ok := reforgeData.(map[string]interface{})
+		if !ok {
+			continue
+		}
+		
+		reforge := parseReforgeData(reforgeName, reforgeDataMap, "Blacksmith")
+		if reforge != nil {
+			reforgeMap[reforgeName] = reforge
+		}
+	}
+	
+	// then overlay/add reforges from reforgestones.json (stone reforges have priority)
+	for stoneID, stoneData := range config.NEUReforgeStones {
+		stoneDataMap, ok := stoneData.(map[string]interface{})
+		if !ok {
+			continue
+		}
+		
+		reforgeName, _ := stoneDataMap["reforgeName"].(string)
+		if reforgeName == "" {
+			continue
+		}
+		
+		reforge := parseReforgeData(reforgeName, stoneDataMap, "Reforge Stone")
+		if reforge != nil {
+			reforge.StoneID = stoneID
+			
+			// fetch stone price and details from redis
+			if config.RDB != nil {
+				key := fmt.Sprintf("reforge_stone:%s", stoneID)
+				stoneJSON, err := config.RDB.Get(config.Ctx, key).Result()
+				if err == nil && stoneJSON != "" {
+					var stone models.Item
+					if err := json.Unmarshal([]byte(stoneJSON), &stone); err == nil {
+						reforge.StoneName = stone.Name
+						reforge.StoneTier = stone.Tier
+						
+						// get best available price (auction > bazaar buy > bazaar sell)
+						if stone.AuctionPrice != nil {
+							price := int64(*stone.AuctionPrice)
+							reforge.StonePrice = &price
+						} else if stone.BazaarBuyPrice != nil {
+							price := int64(*stone.BazaarBuyPrice)
+							reforge.StonePrice = &price
+						} else if stone.BazaarSellPrice != nil {
+							price := int64(*stone.BazaarSellPrice)
+							reforge.StonePrice = &price
+						}
+					}
+				}
+			}
+			
+			reforgeMap[reforgeName] = reforge
+		}
+	}
+	
+	// convert map to slice
+	reforges := make([]models.Reforge, 0, len(reforgeMap))
+	for _, reforge := range reforgeMap {
+		reforges = append(reforges, *reforge)
+	}
+	
+	return reforges
+}
+
+// parses reforge data from a map into a reforge struct
+func parseReforgeData(reforgeName string, data map[string]interface{}, source string) *models.Reforge {
+	reforge := &models.Reforge{
+		ReforgeName: reforgeName,
+		Source:      source,
+	}
+	
+	// parse item types - can be string or object with internalName array
+	if itemTypes, ok := data["itemTypes"].(string); ok {
+		reforge.ItemTypes = itemTypes
+	} else if itemTypesObj, ok := data["itemTypes"].(map[string]interface{}); ok {
+		// special item restrictions like specific items
+		if internalNames, ok := itemTypesObj["internalName"].([]interface{}); ok {
+			names := make([]string, 0, len(internalNames))
+			for _, name := range internalNames {
+				if nameStr, ok := name.(string); ok {
+					names = append(names, nameStr)
+				}
+			}
+			reforge.ItemTypes = "SPECIFIC:" + strings.Join(names, ",")
+		} else if itemIds, ok := itemTypesObj["itemId"].([]interface{}); ok {
+			ids := make([]string, 0, len(itemIds))
+			for _, id := range itemIds {
+				if idStr, ok := id.(string); ok {
+					ids = append(ids, idStr)
+				}
+			}
+			reforge.ItemTypes = "SPECIFIC:" + strings.Join(ids, ",")
+		}
+	}
+	
+	// parse required rarities
+	if rarities, ok := data["requiredRarities"].([]interface{}); ok {
+		reforge.RequiredRarities = make([]string, 0, len(rarities))
+		for _, r := range rarities {
+			if rStr, ok := r.(string); ok {
+				reforge.RequiredRarities = append(reforge.RequiredRarities, rStr)
+			}
+		}
+	}
+	
+	// parse reforge costs
+	if costs, ok := data["reforgeCosts"].(map[string]interface{}); ok {
+		reforge.ReforgeCosts = make(map[string]int)
+		for k, v := range costs {
+			if costFloat, ok := v.(float64); ok {
+				reforge.ReforgeCosts[k] = int(costFloat)
+			}
+		}
+	}
+	
+	// parse reforge ability
+	if ability, ok := data["reforgeAbility"]; ok {
+		reforge.ReforgeAbility = ability
+	}
+	
+	// parse reforge stats
+	if stats, ok := data["reforgeStats"].(map[string]interface{}); ok {
+		reforge.ReforgeStats = make(map[string]models.ReforgeStats)
+		for rarity, statData := range stats {
+			if statMap, ok := statData.(map[string]interface{}); ok {
+				reforgeStat := parseReforgeStats(statMap)
+				reforge.ReforgeStats[rarity] = reforgeStat
+			}
+		}
+	}
+	
+	return reforge
+}
+
+// parses stat values from a map into a reforgestats struct
+func parseReforgeStats(statMap map[string]interface{}) models.ReforgeStats {
+	reforgeStat := models.ReforgeStats{}
+	
+	if v, ok := statMap["health"].(float64); ok {
+		reforgeStat.Health = &v
+	}
+	if v, ok := statMap["defense"].(float64); ok {
+		reforgeStat.Defense = &v
+	}
+	if v, ok := statMap["strength"].(float64); ok {
+		reforgeStat.Strength = &v
+	}
+	if v, ok := statMap["intelligence"].(float64); ok {
+		reforgeStat.Intelligence = &v
+	}
+	if v, ok := statMap["crit_chance"].(float64); ok {
+		reforgeStat.CritChance = &v
+	}
+	if v, ok := statMap["crit_damage"].(float64); ok {
+		reforgeStat.CritDamage = &v
+	}
+	if v, ok := statMap["attack_speed"].(float64); ok {
+		reforgeStat.AttackSpeed = &v
+	}
+	if v, ok := statMap["bonus_attack_speed"].(float64); ok {
+		reforgeStat.BonusAttackSpeed = &v
+	}
+	if v, ok := statMap["speed"].(float64); ok {
+		reforgeStat.Speed = &v
+	}
+	if v, ok := statMap["mining_speed"].(float64); ok {
+		reforgeStat.MiningSpeed = &v
+	}
+	if v, ok := statMap["mining_fortune"].(float64); ok {
+		reforgeStat.MiningFortune = &v
+	}
+	if v, ok := statMap["farming_fortune"].(float64); ok {
+		reforgeStat.FarmingFortune = &v
+	}
+	if v, ok := statMap["damage"].(float64); ok {
+		reforgeStat.Damage = &v
+	}
+	if v, ok := statMap["sea_creature_chance"].(float64); ok {
+		reforgeStat.SeaCreatureChance = &v
+	}
+	if v, ok := statMap["magic_find"].(float64); ok {
+		reforgeStat.MagicFind = &v
+	}
+	if v, ok := statMap["pet_luck"].(float64); ok {
+		reforgeStat.PetLuck = &v
+	}
+	if v, ok := statMap["true_defense"].(float64); ok {
+		reforgeStat.TrueDefense = &v
+	}
+	if v, ok := statMap["ferocity"].(float64); ok {
+		reforgeStat.Ferocity = &v
+	}
+	if v, ok := statMap["ability_damage"].(float64); ok {
+		reforgeStat.AbilityDamage = &v
+	}
+	
+	return reforgeStat
 }
 
