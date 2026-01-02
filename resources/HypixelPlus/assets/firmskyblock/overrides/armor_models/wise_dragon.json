@@ -1,0 +1,1 @@
+{"item_ids":["WISE_DRAGON_CHESTPLATE","WISE_DRAGON_LEGGINGS","WISE_DRAGON_BOOTS"],"layers":[{"identifier":"hplus:wise_dragon_dyed","tint":true},{"identifier":"hplus:wise_dragon_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:wise_dragon"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":2748649},"path":[]}}}]}

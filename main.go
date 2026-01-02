@@ -12,11 +12,11 @@ import (
 	"yard-backend/internal/services"
 )
 
-// main entry point initializes config redis texture loader and starts the http server
+// main entry point initializes config redis resource pack and starts the http server
 func main() {
 	config.LoadEnv()
 	config.InitRedis()
-	handlers.InitTextureLoader()
+	handlers.LoadResourcePack()
 	
 	if err := services.LoadNEUReforgeStones(); err != nil {
 		log.Printf("Warning: Failed to load NEU reforge stones: %v", err)

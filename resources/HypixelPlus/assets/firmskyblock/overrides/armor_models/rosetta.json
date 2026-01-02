@@ -1,0 +1,1 @@
+{"item_ids":["ROSETTA_HELMET","ROSETTA_CHESTPLATE","ROSETTA_LEGGINGS","ROSETTA_BOOTS"],"layers":[{"identifier":"hplus:rosetta_dyed","tint":true},{"identifier":"hplus:rosetta_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:rosetta"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:diamond"},"path":"asset_id"}}}]}

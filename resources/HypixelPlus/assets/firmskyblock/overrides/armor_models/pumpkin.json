@@ -1,0 +1,1 @@
+{"item_ids":["PUMPKIN_HELMET","PUMPKIN_CHESTPLATE","PUMPKIN_LEGGINGS","PUMPKIN_BOOTS"],"layers":[{"identifier":"hplus:pumpkin_dyed","tint":true},{"identifier":"hplus:pumpkin_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:pumpkin"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":15575606},"path":[]}}}]}

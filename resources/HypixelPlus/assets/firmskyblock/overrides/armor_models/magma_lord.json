@@ -1,0 +1,1 @@
+{"item_ids":["MAGMA_LORD_CHESTPLATE","MAGMA_LORD_LEGGINGS","MAGMA_LORD_BOOTS"],"layers":[{"identifier":"hplus:magma_lord_dyed","tint":true},{"identifier":"hplus:magma_lord_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:magma_lord"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":7278344},"path":[]}}}]}

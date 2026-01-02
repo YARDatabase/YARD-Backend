@@ -1,0 +1,1 @@
+{"item_ids":["METAL_CHESTPLATE"],"layers":[{"identifier":"hplus:metal_chestplate_dyed","tint":true},{"identifier":"hplus:metal_chestplate_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:metal_chestplate"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":14277081},"path":[]}}}]}

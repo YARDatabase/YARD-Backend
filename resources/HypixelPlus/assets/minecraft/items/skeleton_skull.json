@@ -1,0 +1,1 @@
+{"HPLUS":"ACCESSORIES","model":{"on_false":{"base":"item/template_skull","model":{"kind":"skeleton","type":"head"},"type":"special"},"on_true":{"model":"hplus:skyblock/accessories/skeleton_talisman","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"SKELETON_TALISMAN"}}}

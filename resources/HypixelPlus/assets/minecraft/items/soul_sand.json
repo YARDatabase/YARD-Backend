@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/soul_sand","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/rift_trophy_chicken_n_egg","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"RIFT_TROPHY_CHICKEN_N_EGG"}}}

@@ -1,0 +1,1 @@
+{"HPLUS":"BEDWARS","model":{"on_false":{"model":"item/cooked_beef","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/mysterious_meat","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"mystery_meat":1}}}

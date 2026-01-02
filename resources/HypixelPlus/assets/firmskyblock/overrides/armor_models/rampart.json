@@ -1,0 +1,1 @@
+{"item_ids":["RAMPART_CHESTPLATE","RAMPART_LEGGINGS","RAMPART_BOOTS"],"layers":[{"identifier":"hplus:rampart_dyed","tint":true},{"identifier":"hplus:rampart_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:rampart"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":14626310},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS SPECIAL","model":{"on_false":{"model":"block/redstone_lamp","type":"model"},"on_true":{"model":"hplus:skyblock/items/special/lantern_of_the_dead","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"LANTERN_OF_THE_DEAD"}}}

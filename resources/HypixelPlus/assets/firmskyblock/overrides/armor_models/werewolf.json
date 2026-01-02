@@ -1,0 +1,1 @@
+{"item_ids":["WEREWOLF_CHESTPLATE","WEREWOLF_LEGGINGS","WEREWOLF_BOOTS"],"layers":[{"identifier":"hplus:werewolf_dyed","tint":true},{"identifier":"hplus:werewolf_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:werewolf"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":1904901},"path":[]}}}]}

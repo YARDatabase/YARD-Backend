@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:skyblock/tools/farming/cactus_knife","type":"model"},"when":[{"extra":[{"color":"dark_purple","text":"Cactus Knife"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/cactus","type":"model"},"property":"component","type":"select"}}

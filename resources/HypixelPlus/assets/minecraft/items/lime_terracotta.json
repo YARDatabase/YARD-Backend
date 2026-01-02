@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:ui/buttons/confirm_disabled","type":"model"},"when":[{"extra":[{"color":"yellow","text":"Deal!"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/lime_terracotta","type":"model"},"property":"component","type":"select"}}

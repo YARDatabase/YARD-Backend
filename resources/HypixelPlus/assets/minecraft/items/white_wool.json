@@ -1,0 +1,1 @@
+{"HPLUS":"BEDWARS","model":{"on_false":{"model":"block/white_wool","type":"model"},"on_true":{"model":"hplus:bedwars/lucky_blocks/rainbow_wool","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"rainbow_wool":1}}}

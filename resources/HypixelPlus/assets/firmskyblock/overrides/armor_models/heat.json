@@ -1,0 +1,1 @@
+{"item_ids":["HEAT_HELMET","HEAT_CHESTPLATE","HEAT_LEGGINGS","HEAT_BOOTS"],"layers":[{"identifier":"hplus:heat_dyed","tint":true},{"identifier":"hplus:heat_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:heat"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":11776947},"path":[]}}}]}

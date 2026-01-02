@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS EVENTS SPOOKY","model":{"on_false":{"model":"item/pumpkin_seeds","type":"model"},"on_true":{"model":"hplus:skyblock/items/events/spooky/pumpkin_guts","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"PUMPKIN_GUTS"}}}

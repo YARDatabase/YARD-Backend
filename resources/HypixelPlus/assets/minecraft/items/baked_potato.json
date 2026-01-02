@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MINING DWARVEN_MINES","model":{"on_false":{"model":"item/baked_potato","type":"model"},"on_true":{"model":"hplus:skyblock/items/mining/dwarven_mines/chilled_pristine_potato","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"CHILLED_PRISTINE_POTATO"}}}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/redstone_ore","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/hemovibe","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"HEMOVIBE"}}}

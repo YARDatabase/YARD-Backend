@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:skyblock/items/misc/portalizer","type":"model"},"when":[{"extra":[{"color":"green","text":"Rift Collections"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/mycelium","type":"model"},"property":"component","type":"select"}}

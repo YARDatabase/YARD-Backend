@@ -1,0 +1,1 @@
+{"item_ids":["DIVAN_CHESTPLATE","DIVAN_LEGGINGS","DIVAN_BOOTS"],"layers":[{"identifier":"hplus:divan_dyed","tint":true},{"identifier":"hplus:divan_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:divan"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:gold"},"path":"asset_id"}}}]}

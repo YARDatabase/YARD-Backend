@@ -1,0 +1,1 @@
+{"item_ids":["GLACITE_CHESTPLATE","GLACITE_LEGGINGS","GLACITE_BOOTS"],"layers":[{"identifier":"hplus:glacite_dyed","tint":true},{"identifier":"hplus:glacite_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:glacite"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":261368},"path":[]}}}]}

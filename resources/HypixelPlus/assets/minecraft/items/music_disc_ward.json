@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS FARMING","model":{"on_false":{"model":"item/music_disc_ward","type":"model"},"on_true":{"model":"hplus:skyblock/items/farming/vinyl_buzzin_beats","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"VINYL_BUZZIN_BEATS"}}}

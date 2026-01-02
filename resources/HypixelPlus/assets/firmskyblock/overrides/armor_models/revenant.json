@@ -1,0 +1,1 @@
+{"item_ids":["REVENANT_CHESTPLATE","REVENANT_LEGGINGS","REVENANT_BOOTS"],"layers":[{"identifier":"hplus:revenant_dyed","tint":true},{"identifier":"hplus:revenant_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:revenant"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:diamond"},"path":"asset_id"}}}]}

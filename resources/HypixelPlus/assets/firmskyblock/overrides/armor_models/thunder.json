@@ -1,0 +1,1 @@
+{"item_ids":["THUNDER_CHESTPLATE","THUNDER_LEGGINGS","THUNDER_BOOTS"],"layers":[{"identifier":"hplus:thunder_dyed","tint":true},{"identifier":"hplus:thunder_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:thunder"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":2416101},"path":[]}}}]}

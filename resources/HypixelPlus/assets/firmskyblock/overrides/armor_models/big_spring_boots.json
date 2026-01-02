@@ -1,0 +1,1 @@
+{"item_ids":["BIG_SPRING_BOOTS"],"layers":[{"identifier":"hplus:big_spring_boots_dyed","tint":true},{"identifier":"hplus:big_spring_boots_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:big_spring_boots"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:iron"},"path":"asset_id"}}}]}

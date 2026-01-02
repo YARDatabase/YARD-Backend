@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:ui/bank_upgrades/premier_account","type":"model"},"when":[{"extra":[{"color":"gold","text":"Generate 10M Coins"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/diamond_block","type":"model"},"property":"component","type":"select"}}

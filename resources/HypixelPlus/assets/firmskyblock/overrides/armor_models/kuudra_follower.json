@@ -1,0 +1,1 @@
+{"item_ids":["KUUDRA_FOLLOWER_CHESTPLATE","KUUDRA_FOLLOWER_LEGGINGS","KUUDRA_FOLLOWER_BOOTS"],"layers":[{"identifier":"hplus:kuudra_follower_dyed","tint":true},{"identifier":"hplus:kuudra_follower_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:kuudra_follower"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":3494666},"path":[]}}}]}

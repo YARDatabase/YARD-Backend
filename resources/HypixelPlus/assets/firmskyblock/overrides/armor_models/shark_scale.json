@@ -1,0 +1,1 @@
+{"item_ids":["SHARK_SCALE_CHESTPLATE","SHARK_SCALE_LEGGINGS","SHARK_SCALE_BOOTS"],"layers":[{"identifier":"hplus:shark_scale_dyed","tint":true},{"identifier":"hplus:shark_scale_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:shark_scale"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":11430},"path":[]}}}]}

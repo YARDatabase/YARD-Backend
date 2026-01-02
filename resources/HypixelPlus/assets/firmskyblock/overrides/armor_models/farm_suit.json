@@ -1,0 +1,1 @@
+{"item_ids":["FARM_SUIT_HELMET","FARM_SUIT_CHESTPLATE","FARM_SUIT_LEGGINGS","FARM_SUIT_BOOTS"],"layers":[{"identifier":"hplus:farm_suit_dyed","tint":true},{"identifier":"hplus:farm_suit_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:farm_suit"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16776960},"path":[]}}}]}

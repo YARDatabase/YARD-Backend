@@ -1,0 +1,1 @@
+{"item_ids":["LAPIS_ARMOR_CHESTPLATE","LAPIS_ARMOR_LEGGINGS","LAPIS_ARMOR_BOOTS"],"layers":[{"identifier":"hplus:lapis_armor_dyed","tint":true},{"identifier":"hplus:lapis_armor_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:lapis_armor"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":255},"path":[]}}}]}

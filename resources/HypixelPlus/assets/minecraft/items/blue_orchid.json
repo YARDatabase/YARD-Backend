@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS DUNGEONS","model":{"on_false":{"model":"item/blue_orchid","type":"model"},"on_true":{"model":"hplus:skyblock/items/dungeons/fel_rose","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"FEL_ROSE"}}}

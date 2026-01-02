@@ -1,0 +1,1 @@
+{"item_ids":["RABBIT_HELMET","RABBIT_CHESTPLATE","RABBIT_LEGGINGS","RABBIT_BOOTS"],"layers":[{"identifier":"hplus:rabbit_dyed","tint":true},{"identifier":"hplus:rabbit_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:rabbit"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":13357787},"path":[]}}}]}

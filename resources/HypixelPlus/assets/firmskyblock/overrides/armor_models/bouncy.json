@@ -1,0 +1,1 @@
+{"item_ids":["BOUNCY_HELMET","BOUNCY_CHESTPLATE","BOUNCY_LEGGINGS","BOUNCY_BOOTS"],"layers":[{"identifier":"hplus:bouncy_dyed","tint":true},{"identifier":"hplus:bouncy_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:bouncy"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":11403055},"path":[]}}}]}

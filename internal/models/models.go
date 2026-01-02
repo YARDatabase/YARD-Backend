@@ -22,7 +22,7 @@ type BazaarOrder struct {
 
 type ReforgeStats struct {
 	Health            *float64 `json:"health,omitempty"`
-	Defense            *float64 `json:"defense,omitempty"`
+	Defense           *float64 `json:"defense,omitempty"`
 	Strength          *float64 `json:"strength,omitempty"`
 	Intelligence      *float64 `json:"intelligence,omitempty"`
 	CritChance        *float64 `json:"crit_chance,omitempty"`
@@ -33,6 +33,8 @@ type ReforgeStats struct {
 	MiningSpeed       *float64 `json:"mining_speed,omitempty"`
 	MiningFortune     *float64 `json:"mining_fortune,omitempty"`
 	FarmingFortune    *float64 `json:"farming_fortune,omitempty"`
+	ForagingFortune   *float64 `json:"foraging_fortune,omitempty"`
+	ForagingWisdom    *float64 `json:"foraging_wisdom,omitempty"`
 	Damage            *float64 `json:"damage,omitempty"`
 	SeaCreatureChance *float64 `json:"sea_creature_chance,omitempty"`
 	MagicFind         *float64 `json:"magic_find,omitempty"`

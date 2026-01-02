@@ -1,0 +1,1 @@
+{"item_ids":["MELON_CHESTPLATE","MELON_LEGGINGS","MELON_BOOTS"],"layers":[{"identifier":"hplus:melon_dyed","tint":true},{"identifier":"hplus:melon_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:melon"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":9018912},"path":[]}}}]}

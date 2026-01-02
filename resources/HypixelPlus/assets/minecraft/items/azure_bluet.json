@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS PET_ITEMS","model":{"on_false":{"model":"item/azure_bluet","type":"model"},"on_true":{"model":"hplus:skyblock/items/pet_items/antique_remedies","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"ANTIQUE_REMEDIES"}}}

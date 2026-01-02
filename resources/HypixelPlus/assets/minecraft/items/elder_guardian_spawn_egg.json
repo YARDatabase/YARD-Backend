@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MINING DWARVEN_MINES","model":{"on_false":{"model":"item/elder_guardian_spawn_egg","type":"model"},"on_true":{"model":"hplus:skyblock/items/mining/dwarven_mines/goblin_egg","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"GOBLIN_EGG"}}}

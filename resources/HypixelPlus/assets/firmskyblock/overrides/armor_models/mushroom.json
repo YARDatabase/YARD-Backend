@@ -1,0 +1,1 @@
+{"item_ids":["MUSHROOM_HELMET","MUSHROOM_CHESTPLATE","MUSHROOM_LEGGINGS","MUSHROOM_BOOTS"],"layers":[{"identifier":"hplus:mushroom_dyed","tint":true},{"identifier":"hplus:mushroom_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:mushroom"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16711680},"path":[]}}}]}

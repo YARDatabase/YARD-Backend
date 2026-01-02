@@ -1,0 +1,1 @@
+{"item_ids":["PARTY_HAT"],"layers":[{"identifier":"hplus:party_hat_dyed","tint":true},{"identifier":"hplus:party_hat_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:party_hat"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":65280},"path":[]}}}]}

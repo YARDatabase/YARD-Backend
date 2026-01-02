@@ -1,0 +1,1 @@
+{"item_ids":["DIVER_CHESTPLATE","DIVER_LEGGINGS","DIVER_BOOTS"],"layers":[{"identifier":"hplus:diver_dyed","tint":true},{"identifier":"hplus:diver_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:diver"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:gold"},"path":"asset_id"}}}]}

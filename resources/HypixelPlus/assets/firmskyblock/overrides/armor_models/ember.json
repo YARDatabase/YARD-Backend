@@ -1,0 +1,1 @@
+{"item_ids":["EMBER_CHESTPLATE","EMBER_LEGGINGS","EMBER_BOOTS"],"layers":[{"identifier":"hplus:ember_dyed","tint":true},{"identifier":"hplus:ember_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:ember"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:chainmail"},"path":"asset_id"}}}]}

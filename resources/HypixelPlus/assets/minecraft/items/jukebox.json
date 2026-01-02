@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/jukebox","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/rift_trophy_citizen","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"RIFT_TROPHY_CITIZEN"}}}

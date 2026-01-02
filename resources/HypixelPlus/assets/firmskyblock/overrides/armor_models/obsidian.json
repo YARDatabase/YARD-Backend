@@ -1,0 +1,1 @@
+{"item_ids":["OBSIDIAN_CHESTPLATE"],"layers":[{"identifier":"hplus:obsidian_dyed","tint":true},{"identifier":"hplus:obsidian_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:obsidian"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":0},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:ui/jacob_contest/bronze_medal","type":"model"},"when":[{"extra":[{"color":"red","text":"Medal Conversion"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"item/brick","type":"model"},"property":"component","type":"select"}}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS FARMING","model":{"on_false":{"model":"block/jungle_leaves","tints":[{"type":"constant","value":-12012264}],"type":"model"},"on_true":{"model":"hplus:skyblock/items/farming/plant_matter","tints":[{"type":"constant","value":-12012264}],"type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"PLANT_MATTER"}}}

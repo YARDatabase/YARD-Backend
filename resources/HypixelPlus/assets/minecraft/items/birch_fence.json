@@ -1,0 +1,1 @@
+{"HPLUS":"TOOLS FORAGING","model":{"on_false":{"model":"block/birch_fence_inventory","type":"model"},"on_true":{"model":"hplus:skyblock/tools/foraging/tuning_fork","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"TUNING_FORK"}}}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MISC","model":{"on_false":{"model":"item/ladder","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/necrons_ladder","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"NECRONS_LADDER"}}}

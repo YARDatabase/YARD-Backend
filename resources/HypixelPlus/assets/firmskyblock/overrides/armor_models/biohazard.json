@@ -1,0 +1,1 @@
+{"item_ids":["BIOHAZARD_SUIT","BIOHAZARD_LEGGINGS","BIOHAZARD_BOOTS"],"layers":[{"identifier":"hplus:biohazard_dyed","tint":true},{"identifier":"hplus:biohazard_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:biohazard"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16755712},"path":[]}}}]}

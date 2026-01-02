@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS PET_ITEMS","model":{"on_false":{"model":"item/rabbit_foot","type":"model"},"on_true":{"model":"hplus:skyblock/items/pet_items/bingo_booster","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"BINGO_BOOSTER"}}}

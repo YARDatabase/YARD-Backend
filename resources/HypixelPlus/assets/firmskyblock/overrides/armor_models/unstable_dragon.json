@@ -1,0 +1,1 @@
+{"item_ids":["UNSTABLE_DRAGON_CHESTPLATE","UNSTABLE_DRAGON_LEGGINGS","UNSTABLE_DRAGON_BOOTS"],"layers":[{"identifier":"hplus:unstable_dragon_dyed","tint":true},{"identifier":"hplus:unstable_dragon_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:unstable_dragon"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":11670243},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS SLAYER REVENANT_HORROR","model":{"on_false":{"model":"item/charcoal","type":"model"},"on_true":{"model":"hplus:skyblock/items/slayer/revenant_horror/foul_flesh","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"FOUL_FLESH"}}}

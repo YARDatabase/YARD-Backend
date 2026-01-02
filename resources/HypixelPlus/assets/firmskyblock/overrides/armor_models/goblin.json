@@ -1,0 +1,1 @@
+{"item_ids":["GOBLIN_CHESTPLATE","GOBLIN_LEGGINGS","GOBLIN_BOOTS"],"layers":[{"identifier":"hplus:goblin_dyed","tint":true},{"identifier":"hplus:goblin_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:goblin"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":3649602},"path":[]}}}]}

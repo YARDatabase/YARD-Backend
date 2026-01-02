@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MISC","model":{"on_false":{"model":"block/light_weighted_pressure_plate","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/parkour_controller","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"PARKOUR_CONTROLLER"}}}

@@ -1,0 +1,1 @@
+{"item_ids":["CROWN_OF_GREED"],"layers":[{"identifier":"hplus:crown_of_greed_dyed","tint":true},{"identifier":"hplus:crown_of_greed_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:crown_of_greed"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:gold"},"path":"asset_id"}}}]}

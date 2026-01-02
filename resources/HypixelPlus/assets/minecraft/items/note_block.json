@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:ui/icons/lobby/choose_team","type":"model"},"when":[{"extra":[{"color":"green","text":"Team Selector "},{"color":"gray","text":"(Right Click)"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/note_block","type":"model"},"property":"component","type":"select"}}

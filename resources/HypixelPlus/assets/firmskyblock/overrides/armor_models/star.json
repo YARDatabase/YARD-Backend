@@ -1,0 +1,1 @@
+{"item_ids":["STAR_HELMET","STAR_CHESTPLATE","STAR_LEGGINGS","STAR_BOOTS"],"layers":[{"identifier":"hplus:star_dyed","tint":true},{"identifier":"hplus:star_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:star"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:gold"},"path":"asset_id"}}}]}

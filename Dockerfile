@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY go.mod ./
 COPY . .
-COPY FurfSky ./FurfSky
+COPY resources ./resources
 COPY NotEnoughUpdates-REPO ./NotEnoughUpdates-REPO
 COPY .env* ./
 
@@ -18,11 +18,10 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 COPY --from=builder /app/yard-backend .
-COPY --from=builder /app/FurfSky ./FurfSky
+COPY --from=builder /app/resources ./resources
 COPY --from=builder /app/NotEnoughUpdates-REPO ./NotEnoughUpdates-REPO
 COPY --from=builder /app/.env* ./
 
 EXPOSE 8080
 
 CMD ["./yard-backend"]
-

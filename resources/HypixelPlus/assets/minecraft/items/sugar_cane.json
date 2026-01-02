@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"item/sugar_cane","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/caducous_legume","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"CADUCOUS_LEGUME"}}}

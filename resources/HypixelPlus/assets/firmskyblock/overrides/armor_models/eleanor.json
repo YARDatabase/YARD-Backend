@@ -1,0 +1,1 @@
+{"item_ids":["ELEANOR_CAP","ELEANOR_TUNIC","ELEANOR_TROUSERS","ELEANOR_SLIPPERS"],"layers":[{"identifier":"hplus:eleanor_dyed","tint":true},{"identifier":"hplus:eleanor_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:eleanor"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16766720},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"HPLUS":"GLITCH","model":{"on_false":{"model":"item/snowball","type":"model"},"on_true":{"model":"hplus:skyblock/glitch/frosty_snow_ball","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"FROSTY_SNOW_BALL"}}}

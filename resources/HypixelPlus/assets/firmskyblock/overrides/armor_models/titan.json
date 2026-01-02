@@ -1,0 +1,1 @@
+{"item_ids":["TITAN_CHESTPLATE","TITAN_LEGGINGS","TITAN_BOOTS"],"layers":[{"identifier":"hplus:titan_dyed","tint":true},{"identifier":"hplus:titan_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:titan"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:diamond"},"path":"asset_id"}}}]}

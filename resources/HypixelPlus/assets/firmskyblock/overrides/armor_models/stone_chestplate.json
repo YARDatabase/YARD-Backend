@@ -1,0 +1,1 @@
+{"item_ids":["STONE_CHESTPLATE"],"layers":[{"identifier":"hplus:stone_chestplate_dyed","tint":true},{"identifier":"hplus:stone_chestplate_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:stone_chestplate"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":14277081},"path":[]}}}]}

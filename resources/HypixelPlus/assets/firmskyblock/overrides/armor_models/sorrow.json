@@ -1,0 +1,1 @@
+{"item_ids":["SORROW_HELMET","SORROW_CHESTPLATE","SORROW_LEGGINGS","SORROW_BOOTS"],"layers":[{"identifier":"hplus:sorrow_dyed","tint":true},{"identifier":"hplus:sorrow_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:sorrow"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:chainmail"},"path":"asset_id"}}}]}

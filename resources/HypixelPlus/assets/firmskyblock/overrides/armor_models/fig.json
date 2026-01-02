@@ -1,0 +1,1 @@
+{"item_ids":["FIG_CHESTPLATE","FIG_LEGGINGS","FIG_BOOTS"],"layers":[{"identifier":"hplus:fig_dyed","tint":true},{"identifier":"hplus:fig_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:fig"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":1873753},"path":[]}}}]}

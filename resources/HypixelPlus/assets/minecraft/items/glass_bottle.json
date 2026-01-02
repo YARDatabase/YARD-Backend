@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"item/glass_bottle","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/empty_odonata_bottle","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"EMPTY_ODONATA_BOTTLE"}}}

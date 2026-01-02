@@ -1,0 +1,1 @@
+{"item_ids":["BAT_PERSON_CHESTPLATE","BAT_PERSON_LEGGINGS","BAT_PERSON_BOOTS"],"layers":[{"identifier":"hplus:bat_person_dyed","tint":true},{"identifier":"hplus:bat_person_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:bat_person"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":0},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MISC","model":{"on_false":{"model":"block/bookshelf","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/dianas_bookshelf","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"DIANAS_BOOKSHELF"}}}

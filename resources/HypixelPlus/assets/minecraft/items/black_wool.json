@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS PET_ITEMS","model":{"on_false":{"model":"block/black_wool","type":"model"},"on_true":{"model":"hplus:skyblock/items/pet_items/black_woolen_yarn","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"BLACK_WOOLEN_YARN"}}}

@@ -131,10 +131,16 @@ func GetReforgeEffectForStone(itemID string) *models.ReforgeEffect {
 				if v, ok := statMap["mining_fortune"].(float64); ok {
 					reforgeStat.MiningFortune = &v
 				}
-				if v, ok := statMap["farming_fortune"].(float64); ok {
-					reforgeStat.FarmingFortune = &v
-				}
-				if v, ok := statMap["damage"].(float64); ok {
+			if v, ok := statMap["farming_fortune"].(float64); ok {
+				reforgeStat.FarmingFortune = &v
+			}
+			if v, ok := statMap["foraging_fortune"].(float64); ok {
+				reforgeStat.ForagingFortune = &v
+			}
+			if v, ok := statMap["foraging_wisdom"].(float64); ok {
+				reforgeStat.ForagingWisdom = &v
+			}
+			if v, ok := statMap["damage"].(float64); ok {
 					reforgeStat.Damage = &v
 				}
 				if v, ok := statMap["sea_creature_chance"].(float64); ok {
@@ -265,7 +271,29 @@ func GetAllReforges() []models.Reforge {
 		reforges = append(reforges, *reforge)
 	}
 	
+	// apply manual data corrections for known NEU data issues
+	applyDataCorrections(reforges)
+	
 	return reforges
+}
+
+// applies manual corrections to fix known data issues in NEU repo
+func applyDataCorrections(reforges []models.Reforge) {
+	for i := range reforges {
+		switch reforges[i].ReforgeName {
+		case "Ancient":
+			// fix: COMMON tier has crit_damage instead of crit_chance
+			// the +3 value should be crit_chance, not crit_damage
+			if stats, ok := reforges[i].ReforgeStats["COMMON"]; ok {
+				if stats.CritDamage != nil && *stats.CritDamage == 3 {
+					critChance := float64(3)
+					stats.CritChance = &critChance
+					stats.CritDamage = nil
+					reforges[i].ReforgeStats["COMMON"] = stats
+				}
+			}
+		}
+	}
 }
 
 // parses reforge data from a map into a reforge struct
@@ -375,10 +403,16 @@ func parseReforgeStats(statMap map[string]interface{}) models.ReforgeStats {
 	if v, ok := statMap["mining_fortune"].(float64); ok {
 		reforgeStat.MiningFortune = &v
 	}
-	if v, ok := statMap["farming_fortune"].(float64); ok {
-		reforgeStat.FarmingFortune = &v
-	}
-	if v, ok := statMap["damage"].(float64); ok {
+			if v, ok := statMap["farming_fortune"].(float64); ok {
+				reforgeStat.FarmingFortune = &v
+			}
+			if v, ok := statMap["foraging_fortune"].(float64); ok {
+				reforgeStat.ForagingFortune = &v
+			}
+			if v, ok := statMap["foraging_wisdom"].(float64); ok {
+				reforgeStat.ForagingWisdom = &v
+			}
+			if v, ok := statMap["damage"].(float64); ok {
 		reforgeStat.Damage = &v
 	}
 	if v, ok := statMap["sea_creature_chance"].(float64); ok {

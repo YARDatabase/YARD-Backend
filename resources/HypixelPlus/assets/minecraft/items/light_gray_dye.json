@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS SPECIAL CAKE_SOUL","model":{"on_false":{"model":"item/light_gray_dye","type":"model"},"on_true":{"model":"hplus:skyblock/items/special/cake_soul/cake_soul_silver","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"CAKE_SOUL"}}}

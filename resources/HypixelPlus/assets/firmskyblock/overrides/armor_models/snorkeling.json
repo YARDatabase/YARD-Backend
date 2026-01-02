@@ -1,0 +1,1 @@
+{"item_ids":["SNORKELING_CHESTPLATE","SNORKELING_LEGGINGS","SNORKELING_BOOTS"],"layers":[{"identifier":"hplus:snorkeling_dyed","tint":true},{"identifier":"hplus:snorkeling_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:snorkeling"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":0},"path":[]}}}]}

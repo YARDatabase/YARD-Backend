@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MISC","model":{"on_false":{"model":"block/iron_block","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/parkour_times","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"PARKOUR_TIMES"}}}

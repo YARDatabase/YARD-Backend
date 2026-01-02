@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/lapis_ore","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/rift_trophy_lazy_living","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"RIFT_TROPHY_LAZY_LIVING"}}}

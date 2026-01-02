@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/oak_planks","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/mirrored_wood","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"MIRRORED_WOOD"}}}

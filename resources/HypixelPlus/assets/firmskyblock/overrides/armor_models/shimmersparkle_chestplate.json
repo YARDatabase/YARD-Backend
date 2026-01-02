@@ -1,0 +1,1 @@
+{"item_ids":["SHIMMERSPARKLE_CHESTPLATE"],"layers":[{"identifier":"hplus:shimmersparkle_chestplate_dyed","tint":true},{"identifier":"hplus:shimmersparkle_chestplate_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:shimmersparkle_chestplate"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:gold"},"path":"asset_id"}}}]}

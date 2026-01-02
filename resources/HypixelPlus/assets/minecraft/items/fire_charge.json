@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS FISHING CRIMSON_ISLE","model":{"on_false":{"model":"item/fire_charge","type":"model"},"on_true":{"model":"hplus:skyblock/items/fishing/crimson_isle/lump_of_magma","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"LUMP_OF_MAGMA"}}}

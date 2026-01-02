@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"item/zombie_spawn_egg","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/lm_egg_legs","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"LM_EGG_LEGS"}}}

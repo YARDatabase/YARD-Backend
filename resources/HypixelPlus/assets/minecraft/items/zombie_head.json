@@ -1,0 +1,1 @@
+{"HPLUS":"ACCESSORIES","model":{"on_false":{"base":"item/template_skull","model":{"kind":"zombie","type":"head"},"type":"special"},"on_true":{"model":"hplus:skyblock/accessories/zombie/zombie_talisman","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"ZOMBIE_TALISMAN"}}}

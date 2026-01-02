@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS FARMING","model":{"on_false":{"model":"item/music_disc_blocks","type":"model"},"on_true":{"model":"hplus:skyblock/items/farming/vinyl_cicada_symphony","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"VINYL_CICADA_SYMPHONY"}}}

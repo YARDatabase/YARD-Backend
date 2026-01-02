@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS DUNGEONS","model":{"on_false":{"model":"item/red_mushroom","type":"model"},"on_true":{"model":"hplus:skyblock/items/dungeons/bonzo_fragment","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"BONZO_FRAGMENT"}}}

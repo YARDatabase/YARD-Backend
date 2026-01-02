@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"item/pink_tulip","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/dead_cat_detector","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"DEAD_CAT_DETECTOR"}}}

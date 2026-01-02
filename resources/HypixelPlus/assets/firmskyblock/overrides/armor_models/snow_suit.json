@@ -1,0 +1,1 @@
+{"item_ids":["SNOW_SUIT_CHESTPLATE","SNOW_SUIT_LEGGINGS","SNOW_SUIT_BOOTS"],"layers":[{"identifier":"hplus:snow_suit_dyed","tint":true},{"identifier":"hplus:snow_suit_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:snow_suit"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16777215},"path":[]}}}]}

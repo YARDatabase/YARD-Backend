@@ -1,0 +1,1 @@
+{"item_ids":["YOUNG_DRAGON_CHESTPLATE","YOUNG_DRAGON_LEGGINGS","YOUNG_DRAGON_BOOTS"],"layers":[{"identifier":"hplus:young_dragon_dyed","tint":true},{"identifier":"hplus:young_dragon_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:young_dragon"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":14542064},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"item_ids":["SKELETOR_CHESTPLATE","SKELETOR_LEGGINGS","SKELETOR_BOOTS"],"layers":[{"identifier":"hplus:skeletor_dyed","tint":true},{"identifier":"hplus:skeletor_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:skeletor"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:chainmail"},"path":"asset_id"}}}]}

@@ -1,0 +1,1 @@
+{"item_ids":["SPRING_BOOTS"],"layers":[{"identifier":"hplus:spring_boots_dyed","tint":true},{"identifier":"hplus:spring_boots_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:spring_boots"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:chainmail"},"path":"asset_id"}}}]}

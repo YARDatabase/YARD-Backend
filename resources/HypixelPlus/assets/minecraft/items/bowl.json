@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"item/bowl","type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/caducous_feeder","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"CADUCOUS_FEEDER"}}}

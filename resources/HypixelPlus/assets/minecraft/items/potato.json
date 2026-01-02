@@ -1,0 +1,1 @@
+{"HPLUS":"GLITCH","model":{"on_false":{"model":"item/potato","type":"model"},"on_true":{"model":"hplus:skyblock/glitch/potatoes","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"POTATO"}}}

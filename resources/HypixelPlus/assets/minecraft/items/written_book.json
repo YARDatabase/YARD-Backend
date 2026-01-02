@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:skyblock/items/dungeons/dungeon_lore_journal","type":"model"},"when":[{"extra":[{"color":"green","text":"Dungeon Journals"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"item/written_book","type":"model"},"property":"component","type":"select"}}

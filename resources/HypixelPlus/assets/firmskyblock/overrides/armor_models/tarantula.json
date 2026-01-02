@@ -1,0 +1,1 @@
+{"item_ids":["TARANTULA_HELMET","TARANTULA_CHESTPLATE","TARANTULA_LEGGINGS","TARANTULA_BOOTS"],"layers":[{"identifier":"hplus:tarantula_dyed","tint":true},{"identifier":"hplus:tarantula_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:tarantula"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":0},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS MISC DISCS","model":{"on_false":{"model":"item/music_disc_11","type":"model"},"on_true":{"model":"hplus:skyblock/items/misc/discs/dungeon_disc_4","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"DUNGEON_DISC_4"}}}

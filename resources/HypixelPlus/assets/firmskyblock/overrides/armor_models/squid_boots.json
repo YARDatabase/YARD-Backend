@@ -1,0 +1,1 @@
+{"item_ids":["SQUID_BOOTS"],"layers":[{"identifier":"hplus:squid_boots_dyed","tint":true},{"identifier":"hplus:squid_boots_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:squid_boots"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":0},"path":[]}}}]}

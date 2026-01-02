@@ -1,0 +1,1 @@
+{"item_ids":["STARRED_THORNS_BOOTS"],"layers":[{"identifier":"hplus:starred_thorns_boots_dyed","tint":true},{"identifier":"hplus:starred_thorns_boots_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:starred_thorns_boots"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":12566463},"path":[]}}}]}

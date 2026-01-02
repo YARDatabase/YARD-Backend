@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS CRIMSON_ISLE","model":{"on_false":{"model":"item/brown_mushroom","type":"model"},"on_true":{"model":"hplus:skyblock/items/crimson_isle/mushroom_spore","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"MUSHROOM_SPORE"}}}

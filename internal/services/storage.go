@@ -111,7 +111,7 @@ func FetchAndStoreReforgeStones(force bool) {
 						return
 					}
 				} else {
-					log.Printf("Data is stale (updated %v ago). Fetching new data...", timeSinceUpdate.Round(time.Minute))
+					log.Printf("Data is stale (updated %v ago). Fetching new data... (Can take up to 3 minutes)", timeSinceUpdate.Round(time.Minute))
 				}
 			}
 		} else {

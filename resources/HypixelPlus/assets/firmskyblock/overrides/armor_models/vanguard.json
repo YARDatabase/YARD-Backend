@@ -1,0 +1,1 @@
+{"item_ids":["VANGUARD_CHESTPLATE","VANGUARD_LEGGINGS","VANGUARD_BOOTS"],"layers":[{"identifier":"hplus:vanguard_dyed","tint":true},{"identifier":"hplus:vanguard_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:vanguard"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":3508479},"path":[]}}}]}

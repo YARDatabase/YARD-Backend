@@ -1,0 +1,1 @@
+{"item_ids":["BLAZE_CHESTPLATE","BLAZE_LEGGINGS","BLAZE_BOOTS"],"layers":[{"identifier":"hplus:blaze_dyed","tint":true},{"identifier":"hplus:blaze_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:blaze"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16243251},"path":[]}}}]}

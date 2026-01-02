@@ -1,0 +1,1 @@
+{"HPLUS":"ACCESSORIES","model":{"on_false":{"model":"block/dark_prismarine","type":"model"},"on_true":{"model":"hplus:skyblock/items/farming/prismapump","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"PRISMAPUMP"}}}

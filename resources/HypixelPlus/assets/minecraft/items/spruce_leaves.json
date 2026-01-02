@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS RIFT","model":{"on_false":{"model":"block/spruce_leaves","tints":[{"type":"constant","value":-10380959}],"type":"model"},"on_true":{"model":"hplus:skyblock/items/rift/rift_trophy_wyldly_supreme","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"RIFT_TROPHY_WYLDLY_SUPREME"}}}

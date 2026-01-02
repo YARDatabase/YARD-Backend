@@ -1,0 +1,1 @@
+{"item_ids":["BACKWATER_CHESTPLATE","BACKWATER_LEGGINGS","BACKWATER_BOOTS"],"layers":[{"identifier":"hplus:backwater_dyed","tint":true},{"identifier":"hplus:backwater_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:backwater"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":97585},"path":[]}}}]}

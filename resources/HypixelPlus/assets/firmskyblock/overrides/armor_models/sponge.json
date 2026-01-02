@@ -1,0 +1,1 @@
+{"item_ids":["SPONGE_CHESTPLATE","SPONGE_LEGGINGS","SPONGE_BOOTS"],"layers":[{"identifier":"hplus:sponge_dyed","tint":true},{"identifier":"hplus:sponge_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:sponge"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":16768081},"path":[]}}}]}

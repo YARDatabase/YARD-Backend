@@ -1,0 +1,1 @@
+{"item_ids":["PRIMORDIAL_CHESTPLATE","PRIMORDIAL_LEGGINGS","PRIMORDIAL_BOOTS"],"layers":[{"identifier":"hplus:primordial_dyed","tint":true},{"identifier":"hplus:primordial_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:primordial"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":923446},"path":[]}}}]}

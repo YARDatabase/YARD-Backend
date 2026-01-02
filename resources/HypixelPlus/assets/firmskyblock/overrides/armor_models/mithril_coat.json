@@ -1,0 +1,1 @@
+{"item_ids":["MITHRIL_COAT"],"layers":[{"identifier":"hplus:mithril_coat_dyed","tint":true},{"identifier":"hplus:mithril_coat_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:mithril_coat"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:chainmail"},"path":"asset_id"}}}]}

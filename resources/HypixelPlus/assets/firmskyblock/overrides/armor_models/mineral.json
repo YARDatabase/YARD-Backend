@@ -1,0 +1,1 @@
+{"item_ids":["MINERAL_CHESTPLATE","MINERAL_LEGGINGS","MINERAL_BOOTS"],"layers":[{"identifier":"hplus:mineral_dyed","tint":true},{"identifier":"hplus:mineral_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:mineral"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":13428223},"path":[]}}}]}

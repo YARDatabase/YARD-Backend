@@ -1,0 +1,1 @@
+{"item_ids":["ZOMBIE_CHESTPLATE","ZOMBIE_LEGGINGS","ZOMBIE_BOOTS"],"layers":[{"identifier":"hplus:zombie_dyed","tint":true},{"identifier":"hplus:zombie_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:zombie"}],"predicate":{"firmament:component":{"component":"minecraft:equippable","match":{"string":"minecraft:diamond"},"path":"asset_id"}}}]}

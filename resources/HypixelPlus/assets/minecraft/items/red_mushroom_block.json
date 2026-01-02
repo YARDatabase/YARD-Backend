@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:skyblock/tools/farming/fungi_cutter","type":"model"},"when":[{"extra":[{"color":"dark_purple","text":"Fungi Cutter"}],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"block/red_mushroom_block_inventory","type":"model"},"property":"component","type":"select"}}

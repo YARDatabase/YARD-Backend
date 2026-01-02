@@ -1,0 +1,1 @@
+{"HPLUS":"ITEMS SLAYER INFERNO_DEMONLORD","model":{"on_false":{"model":"item/spider_spawn_egg","type":"model"},"on_true":{"model":"hplus:skyblock/items/slayer/inferno_demonlord/amalgamated_crimsonite_new","type":"model"},"predicate":"custom_data","property":"component","type":"condition","value":{"id":"AMALGAMATED_CRIMSONITE_NEW"}}}

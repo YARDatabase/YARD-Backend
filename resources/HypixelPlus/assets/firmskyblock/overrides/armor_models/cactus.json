@@ -1,0 +1,1 @@
+{"item_ids":["CACTUS_HELMET","CACTUS_CHESTPLATE","CACTUS_LEGGINGS","CACTUS_BOOTS"],"layers":[{"identifier":"hplus:cactus_dyed","tint":true},{"identifier":"hplus:cactus_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:cactus"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":65280},"path":[]}}}]}

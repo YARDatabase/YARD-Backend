@@ -1,0 +1,1 @@
+{"item_ids":["GROWTH_HELMET","GROWTH_CHESTPLATE","GROWTH_LEGGINGS","GROWTH_BOOTS"],"layers":[{"identifier":"hplus:growth_dyed","tint":true},{"identifier":"hplus:growth_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:growth"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":48640},"path":[]}}}]}

@@ -1,0 +1,1 @@
+{"item_ids":["LEAFLET_CHESTPLATE","LEAFLET_LEGGINGS","LEAFLET_BOOTS"],"layers":[{"identifier":"hplus:leaflet_dyed","tint":true},{"identifier":"hplus:leaflet_overlay"}],"overrides":[{"layers":[{"identifier":"hplus:leaflet"}],"predicate":{"firmament:component":{"component":"minecraft:dyed_color","match":{"int":5098573},"path":[]}}}]}

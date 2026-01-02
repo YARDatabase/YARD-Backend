@@ -1,0 +1,1 @@
+{"model":{"cases":[{"model":{"model":"hplus:ui/glass/menu_glass_green","type":"model"},"when":[{"extra":[" "],"italic":false,"text":""}]}],"component":"custom_name","fallback":{"model":"item/green_stained_glass_pane","type":"model"},"property":"component","type":"select"}}
