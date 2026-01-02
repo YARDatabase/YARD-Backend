@@ -93,12 +93,14 @@ func FetchAuctionPrice(itemTag string) *int64 {
 	return nil
 }
 
-// fetches bazaar price data with retry logic handling rate limits and exponential backoff
+// fetches bazaar price data
+// retries indefinitely until success when rate limited
 func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Response, error) {
-	maxRetries := 3
 	baseDelay := 2 * time.Second
+	maxDelay := 60 * time.Second
+	attempt := 0
 	
-	for attempt := 0; attempt < maxRetries; attempt++ {
+	for {
 		utils.RateLimitWait()
 		
 		url := fmt.Sprintf("%s/api/bazaar/%s/snapshot", config.SkyCoflURL, normalizedTag)
@@ -113,8 +115,12 @@ func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Resp
 		
 		if resp.StatusCode == 429 {
 			resp.Body.Close()
+			attempt++
 			
 			retryAfter := baseDelay * time.Duration(1<<attempt)
+			if retryAfter > maxDelay {
+				retryAfter = maxDelay
+			}
 			
 			if resetTimeStr := resp.Header.Get("X-RateLimit-Reset"); resetTimeStr != "" {
 				if resetTime, err := time.Parse(time.RFC3339, resetTimeStr); err == nil {
@@ -125,17 +131,13 @@ func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Resp
 				}
 			}
 			
-			if attempt < maxRetries-1 {
-				log.Printf("Rate limited for %s (attempt %d/%d), waiting %v", itemTag, attempt+1, maxRetries, retryAfter)
-				time.Sleep(retryAfter)
-				continue
-			}
+			log.Printf("Rate limited for %s (attempt %d), waiting %v", itemTag, attempt, retryAfter)
+			time.Sleep(retryAfter)
+			continue
 		}
 		
 		return resp, nil
 	}
-	
-	return nil, fmt.Errorf("max retries exceeded for %s", itemTag)
 }
 
 // fetches bazaar buy and sell prices along with top buy and sell orders for an item
