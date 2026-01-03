@@ -12,26 +12,27 @@ import (
 )
 
 var (
-	RDB        *redis.Client
-	Ctx        = context.Background()
-	APIURL     = "https://api.hypixel.net/v2/resources/skyblock/items"
-	SkyCoflURL = "https://sky.coflnet.com"
-	NEURepoPath = "NotEnoughUpdates-REPO"
+	RDB           *redis.Client
+	Ctx           = context.Background()
+	APIURL        = "https://api.hypixel.net/v2/resources/skyblock/items"
+	SkyCoflURL    = "https://sky.coflnet.com"
+	NEURepoPath   = "NotEnoughUpdates-REPO"
 	AllowedOrigin = "*"
-	
+
 	RateLimiterMutex sync.Mutex
 	LastRequestTime  time.Time
-	MinRequestDelay  = 700 * time.Millisecond
-	
-	NEUReforgeStones map[string]interface{}
+	// coflnet rate limit: 30 req/10s = 333ms
+	MinRequestDelay = 350 * time.Millisecond
+
+	NEUReforgeStones      map[string]interface{}
 	NEUReforgeStonesMutex sync.RWMutex
-	
-	NEUReforges map[string]interface{}
+
+	NEUReforges      map[string]interface{}
 	NEUReforgesMutex sync.RWMutex
-	
-	APIRateLimitMutex sync.Mutex
-	APIRateLimitMap   = make(map[string]time.Time)
-	APIRateLimitWindow = 1 * time.Minute
+
+	APIRateLimitMutex       sync.Mutex
+	APIRateLimitMap         = make(map[string]time.Time)
+	APIRateLimitWindow      = 1 * time.Minute
 	APIRateLimitMaxRequests = 60
 )
 
@@ -40,21 +41,20 @@ func LoadEnv() {
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found, using environment variables or defaults")
 	}
-	
+
 	if apiURL := os.Getenv("API_URL"); apiURL != "" {
 		APIURL = apiURL
 	}
-	
+
 	if skyCoflURL := os.Getenv("SKYCOFL_URL"); skyCoflURL != "" {
 		SkyCoflURL = skyCoflURL
 	}
-	
+
 	if neuRepoPath := os.Getenv("NEU_REPO_PATH"); neuRepoPath != "" {
 		NEURepoPath = neuRepoPath
 	}
-	
+
 	if allowedOrigin := os.Getenv("ALLOWED_ORIGIN"); allowedOrigin != "" {
 		AllowedOrigin = allowedOrigin
 	}
 }
-

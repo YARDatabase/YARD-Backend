@@ -1,16 +1,29 @@
 package services
 
-import "time"
+import (
+	"log"
+	"time"
+)
 
-// starts the scheduler to fetch and store reforge stones every 15 minutes
+// starts the schedulers for hypixel data (5h) and coflnet prices (5m)
 func StartScheduler() {
+	// initial fetch of stone list from hypixel + prices
 	FetchAndStoreReforgeStones(false)
 
-	ticker := time.NewTicker(15 * time.Minute)
+	// hypixel scheduler: check every hour but only fetch if > 5 hours old
+	hypixelTicker := time.NewTicker(1 * time.Hour)
 	go func() {
-		for range ticker.C {
+		for range hypixelTicker.C {
 			FetchAndStoreReforgeStones(false)
 		}
 	}()
-}
 
+	// price scheduler: refresh prices every 5 minutes
+	priceTicker := time.NewTicker(5 * time.Minute)
+	go func() {
+		for range priceTicker.C {
+			log.Println("Starting scheduled price refresh...")
+			RefreshPrices()
+		}
+	}()
+}

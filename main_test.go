@@ -7,13 +7,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gorilla/mux"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"yard-backend/internal/config"
 	"yard-backend/internal/handlers"
 	"yard-backend/internal/models"
 	"yard-backend/internal/utils"
+
+	"github.com/gorilla/mux"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestHealthHandler(t *testing.T) {
@@ -54,7 +55,7 @@ func TestRateLimitWait(t *testing.T) {
 	utils.RateLimitWait()
 	elapsed := time.Since(start)
 
-	assert.GreaterOrEqual(t, elapsed, 550*time.Millisecond)
+	assert.GreaterOrEqual(t, elapsed, 200*time.Millisecond)
 }
 
 func TestExtractObtainingFromLore(t *testing.T) {
@@ -201,11 +202,11 @@ func TestReforgeStonesResponse(t *testing.T) {
 
 func TestItemStruct(t *testing.T) {
 	item := models.Item{
-		Name:     "Test Stone",
-		Category: "REFORGE_STONE",
-		Tier:     "LEGENDARY",
-		ID:       "TEST_STONE",
-		Glowing:  false,
+		Name:       "Test Stone",
+		Category:   "REFORGE_STONE",
+		Tier:       "LEGENDARY",
+		ID:         "TEST_STONE",
+		Glowing:    false,
 		CanAuction: true,
 	}
 
@@ -217,9 +218,9 @@ func TestItemStruct(t *testing.T) {
 
 func TestBazaarOrder(t *testing.T) {
 	order := models.BazaarOrder{
-		Amount:      100,
+		Amount:       100,
 		PricePerUnit: 50.5,
-		Orders:      5,
+		Orders:       5,
 	}
 
 	assert.Equal(t, int64(100), order.Amount)
@@ -231,8 +232,8 @@ func TestReforgeStats(t *testing.T) {
 	health := 100.0
 	defense := 50.0
 	stats := models.ReforgeStats{
-		Health:   &health,
-		Defense:  &defense,
+		Health:  &health,
+		Defense: &defense,
 	}
 
 	assert.NotNil(t, stats.Health)
@@ -243,8 +244,8 @@ func TestReforgeStats(t *testing.T) {
 
 func TestReforgeEffect(t *testing.T) {
 	effect := models.ReforgeEffect{
-		ReforgeName: "Test Reforge",
-		ItemTypes:   "SWORD,AXE",
+		ReforgeName:      "Test Reforge",
+		ItemTypes:        "SWORD,AXE",
 		RequiredRarities: []string{"EPIC", "LEGENDARY"},
 		ReforgeCosts: map[string]int{
 			"EPIC": 1000,
