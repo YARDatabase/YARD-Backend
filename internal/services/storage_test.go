@@ -3,9 +3,10 @@ package services
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"yard-backend/internal/config"
 	"yard-backend/internal/models"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestStoreReforgeStones_WhenRedisNotInitialized_ReturnsError(t *testing.T) {
@@ -15,7 +16,7 @@ func TestStoreReforgeStones_WhenRedisNotInitialized_ReturnsError(t *testing.T) {
 	defer func() { config.RDB = originalRDB }()
 
 	// Act
-	err := StoreReforgeStones([]models.Item{}, 0)
+	err := StoreReforgeStones([]models.Item{})
 
 	// Assert
 	assert.Error(t, err)

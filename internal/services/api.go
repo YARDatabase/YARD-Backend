@@ -99,29 +99,29 @@ func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Resp
 	baseDelay := 2 * time.Second
 	maxDelay := 60 * time.Second
 	attempt := 0
-	
+
 	for {
 		utils.RateLimitWait()
-		
+
 		url := fmt.Sprintf("%s/api/bazaar/%s/snapshot", config.SkyCoflURL, normalizedTag)
 		resp, err := http.Get(url)
 		if err != nil {
 			return nil, err
 		}
-		
+
 		if resp.StatusCode == http.StatusOK {
 			return resp, nil
 		}
-		
+
 		if resp.StatusCode == 429 {
 			resp.Body.Close()
 			attempt++
-			
+
 			retryAfter := baseDelay * time.Duration(1<<attempt)
 			if retryAfter > maxDelay {
 				retryAfter = maxDelay
 			}
-			
+
 			if resetTimeStr := resp.Header.Get("X-RateLimit-Reset"); resetTimeStr != "" {
 				if resetTime, err := time.Parse(time.RFC3339, resetTimeStr); err == nil {
 					waitTime := time.Until(resetTime)
@@ -130,12 +130,14 @@ func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Resp
 					}
 				}
 			}
-			
-			log.Printf("Rate limited for %s (attempt %d), waiting %v", itemTag, attempt, retryAfter)
+
+			if attempt >= 5 {
+				log.Printf("Rate limited for %s (attempt %d), waiting %v", itemTag, attempt, retryAfter)
+			}
 			time.Sleep(retryAfter)
 			continue
 		}
-		
+
 		return resp, nil
 	}
 }
@@ -143,7 +145,7 @@ func FetchBazaarPriceWithRetry(itemTag string, normalizedTag string) (*http.Resp
 // fetches bazaar buy and sell prices along with top buy and sell orders for an item
 func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder, []models.BazaarOrder) {
 	normalizedTag := strings.ToLower(itemTag)
-	
+
 	resp, err := FetchBazaarPriceWithRetry(itemTag, normalizedTag)
 	if err != nil {
 		log.Printf("Error fetching bazaar data for %s (tried %s): %v", itemTag, normalizedTag, err)
@@ -179,17 +181,17 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 	}
 
 	var snapshot struct {
-		BuyPrice   float64 `json:"buyPrice"`
-		SellPrice  float64 `json:"sellPrice"`
-		BuyOrders  []struct {
-			Amount      int64   `json:"amount"`
+		BuyPrice  float64 `json:"buyPrice"`
+		SellPrice float64 `json:"sellPrice"`
+		BuyOrders []struct {
+			Amount       int64   `json:"amount"`
 			PricePerUnit float64 `json:"pricePerUnit"`
-			Orders      int     `json:"orders"`
+			Orders       int     `json:"orders"`
 		} `json:"buyOrders"`
 		SellOrders []struct {
-			Amount      int64   `json:"amount"`
+			Amount       int64   `json:"amount"`
 			PricePerUnit float64 `json:"pricePerUnit"`
-			Orders      int     `json:"orders"`
+			Orders       int     `json:"orders"`
 		} `json:"sellOrders"`
 	}
 
@@ -211,12 +213,12 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 		buyOrders := make([]models.BazaarOrder, len(snapshot.BuyOrders))
 		for i, order := range snapshot.BuyOrders {
 			buyOrders[i] = models.BazaarOrder{
-				Amount:      order.Amount,
+				Amount:       order.Amount,
 				PricePerUnit: order.PricePerUnit,
-				Orders:      order.Orders,
+				Orders:       order.Orders,
 			}
 		}
-		
+
 		for i := 0; i < len(buyOrders)-1; i++ {
 			for j := i + 1; j < len(buyOrders); j++ {
 				if buyOrders[i].PricePerUnit < buyOrders[j].PricePerUnit {
@@ -224,7 +226,7 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 				}
 			}
 		}
-		
+
 		count := 3
 		if len(buyOrders) < count {
 			count = len(buyOrders)
@@ -237,12 +239,12 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 		sellOrders := make([]models.BazaarOrder, len(snapshot.SellOrders))
 		for i, order := range snapshot.SellOrders {
 			sellOrders[i] = models.BazaarOrder{
-				Amount:      order.Amount,
+				Amount:       order.Amount,
 				PricePerUnit: order.PricePerUnit,
-				Orders:      order.Orders,
+				Orders:       order.Orders,
 			}
 		}
-		
+
 		for i := 0; i < len(sellOrders)-1; i++ {
 			for j := i + 1; j < len(sellOrders); j++ {
 				if sellOrders[i].PricePerUnit > sellOrders[j].PricePerUnit {
@@ -250,7 +252,7 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 				}
 			}
 		}
-		
+
 		count := 3
 		if len(sellOrders) < count {
 			count = len(sellOrders)
@@ -260,4 +262,3 @@ func FetchBazaarPrice(itemTag string) (*float64, *float64, []models.BazaarOrder,
 
 	return buyPrice, sellPrice, topBuyOrders, topSellOrders
 }
-
