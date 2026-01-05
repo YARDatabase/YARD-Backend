@@ -2,6 +2,7 @@ package metrics
 
 import (
 	"net/http"
+	"strconv"
 	"strings"
 
 	"yard-backend/internal/config"
@@ -129,11 +130,64 @@ func isIPAllowed(ip, whitelist string) bool {
 		if ip == allowed {
 			return true
 		}
-		if strings.HasSuffix(allowed, "/24") {
-			prefix := strings.TrimSuffix(allowed, "/24")
-			if strings.HasPrefix(ip, prefix) {
-				return true
+
+		// handle CIDR notation
+		if strings.Contains(allowed, "/") {
+			parts := strings.Split(allowed, "/")
+			if len(parts) != 2 {
+				continue
 			}
+
+			networkIP := parts[0]
+			maskStr := parts[1]
+
+			maskBits, err := strconv.Atoi(maskStr)
+			if err != nil || maskBits < 0 || maskBits > 32 {
+				continue
+			}
+
+			// parse IPs
+			networkParts := strings.Split(networkIP, ".")
+			ipParts := strings.Split(ip, ".")
+
+			if len(networkParts) != 4 || len(ipParts) != 4 {
+				continue
+			}
+
+			// calculate how many full octets to check
+			fullOctets := maskBits / 8
+			remainingBits := maskBits % 8
+
+			// check full octets
+			match := true
+			for i := 0; i < fullOctets && i < 4; i++ {
+				netOctet, err1 := strconv.Atoi(networkParts[i])
+				ipOctet, err2 := strconv.Atoi(ipParts[i])
+				if err1 != nil || err2 != nil || netOctet != ipOctet {
+					match = false
+					break
+				}
+			}
+
+			if !match {
+				continue
+			}
+
+			// check partial octet if needed
+			if remainingBits > 0 && fullOctets < 4 {
+				netOctet, err1 := strconv.Atoi(networkParts[fullOctets])
+				ipOctet, err2 := strconv.Atoi(ipParts[fullOctets])
+				if err1 != nil || err2 != nil {
+					continue
+				}
+
+				mask := (0xFF << (8 - remainingBits)) & 0xFF
+				if (netOctet & mask) != (ipOctet & mask) {
+					continue
+				}
+			}
+
+			return true
 		}
 	}
 
