@@ -269,8 +269,10 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum(rate(yard_http_requests_total[5m])) by (endpoint)",
+          "editorMode": "builder",
+          "expr": "sum by(endpoint) (rate(yard_http_requests_total{endpoint!=\"/metrics\"}[5m]))",
           "legendFormat": "{{endpoint}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -604,5 +606,5 @@
   "timezone": "browser",
   "title": "YARD API Monitoring",
   "uid": "yard-monitoring",
-  "version": 3
+  "version": 4
 }

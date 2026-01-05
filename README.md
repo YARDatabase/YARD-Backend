@@ -208,7 +208,7 @@ Returns the health status of the backend service.
 {
   "status": "ok",
   "message": "YARD Backend is running",
-  "time": "2024-01-01T12:00:00Z"
+  "time": "2026-01-01T12:00:00Z"
 }
 ```
 
@@ -223,7 +223,7 @@ Returns all stored reforge stones with their data.
 {
   "success": true,
   "count": 10,
-  "lastUpdated": "2024-01-01T12:00:00Z",
+  "lastUpdated": "2026-01-01T12:00:00Z",
   "reforgeStones": [
     {
       "id": "MANDRAA",
