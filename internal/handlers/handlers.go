@@ -10,10 +10,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/mux"
 	"yard-backend/internal/config"
 	"yard-backend/internal/models"
 	"yard-backend/internal/services"
+
+	"github.com/gorilla/mux"
 )
 
 // sets cors headers to allow cross origin requests from configured origin
@@ -86,11 +87,12 @@ func HandleReforgeStones(w http.ResponseWriter, r *http.Request) {
 		reforgeStones = append(reforgeStones, stone)
 	}
 
-	lastUpdatedStr, _ := config.RDB.Get(config.Ctx, "reforge_stones:last_updated").Result()
+	pricesUpdatedStr, _ := config.RDB.Get(config.Ctx, "reforge_stones:prices_updated").Result()
 	var lastUpdated time.Time
-	if lastUpdatedStr != "" {
-		if timestamp, err := strconv.ParseInt(lastUpdatedStr, 10, 64); err == nil {
-			lastUpdated = time.Unix(timestamp/1000, 0)
+	if pricesUpdatedStr != "" {
+		if timestamp, err := strconv.ParseInt(pricesUpdatedStr, 10, 64); err == nil {
+			// prices_updated is stored in milliseconds
+			lastUpdated = time.UnixMilli(timestamp)
 		}
 	}
 
@@ -107,7 +109,7 @@ func HandleReforgeStones(w http.ResponseWriter, r *http.Request) {
 // handles requests for item images by id upscaling textures and returning png data
 func HandleItemImage(w http.ResponseWriter, r *http.Request) {
 	EnableCORS(w, r)
-	
+
 	if r.Method == "OPTIONS" {
 		w.WriteHeader(http.StatusOK)
 		return
@@ -121,7 +123,7 @@ func HandleItemImage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	normalizedID := strings.ToUpper(strings.ReplaceAll(itemID, " ", "_"))
-	
+
 	if texturePath, ok := GetItemTexturePath(normalizedID); ok {
 		imageData, err := UpscaleTexture(texturePath, 256)
 		if err != nil {
@@ -150,7 +152,7 @@ func HandleReforges(w http.ResponseWriter, r *http.Request) {
 	}
 
 	reforges := services.GetAllReforges()
-	
+
 	// sort reforges alphabetically by name
 	sort.Slice(reforges, func(i, j int) bool {
 		return reforges[i].ReforgeName < reforges[j].ReforgeName
@@ -166,7 +168,7 @@ func HandleReforges(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	
+
 	if lastUpdated.IsZero() {
 		lastUpdated = time.Now()
 	}
@@ -180,4 +182,3 @@ func HandleReforges(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(response)
 }
-
