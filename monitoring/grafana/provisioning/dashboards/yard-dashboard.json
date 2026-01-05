@@ -287,7 +287,14 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "hideFrom": {
+              "tooltip": false,
+              "viz": false,
+              "legend": false
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -298,8 +305,27 @@
                 "value": null
               }
             ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "country"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "tooltip": false,
+                  "viz": true,
+                  "legend": false
+                }
+              }
+            ]
           }
-        }
+        ]
       },
       "gridPos": {
         "h": 10,
@@ -309,12 +335,66 @@
       },
       "id": 5,
       "options": {
-        "showHeader": true
+        "basemap": {
+          "name": "Default base layer",
+          "type": "xyz",
+          "url": "",
+          "attribution": "Bring your own tile server",
+          "tileSize": 256
+        },
+        "controls": {
+          "showZoom": true,
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showScale": false,
+          "showMeasure": false,
+          "showDebug": false
+        },
+        "layers": [
+          {
+            "type": "markers",
+            "config": {
+              "style": {
+                "size": {
+                  "field": "Value",
+                  "fixed": 5,
+                  "min": 2,
+                  "max": 15
+                },
+                "fillColor": {
+                  "field": "Value",
+                  "fixed": "dark-green"
+                },
+                "color": {
+                  "fixed": "dark-red"
+                },
+                "opacity": 0.4,
+                "symbol": {
+                  "fixed": "",
+                  "mode": "fixed"
+                }
+              },
+              "name": "Requests by Country",
+              "location": {
+                "mode": "lookup",
+                "lookup": "country",
+                "gazetteer": "countries"
+              },
+              "tooltip": true
+            }
+          }
+        ],
+        "view": {
+          "id": "zero",
+          "lat": 0,
+          "lon": 0,
+          "zoom": 1
+        }
       },
       "pluginVersion": "8.0.0",
       "targets": [
         {
-          "expr": "sum(yard_http_requests_by_country_total) by (country)",
+          "expr": "sum(yard_http_requests_by_country_total{country!=\"unknown\"}) by (country)",
           "format": "table",
           "instant": true,
           "refId": "A"
@@ -333,13 +413,13 @@
             },
             "renameByName": {
               "Value": "Total Requests",
-              "country": "Country"
+              "country": "country"
             }
           }
         }
       ],
       "title": "Requests by Country",
-      "type": "table"
+      "type": "geomap"
     },
     {
       "datasource": "Prometheus",
