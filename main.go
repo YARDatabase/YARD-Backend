@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"yard-backend/internal/config"
 	"yard-backend/internal/handlers"
+	"yard-backend/internal/metrics"
 	"yard-backend/internal/middleware"
 	"yard-backend/internal/services"
 )
@@ -28,12 +29,26 @@ func main() {
 	
 	services.StartScheduler()
 
+	metrics.Init(config.MetricsEnabled)
+	if config.MetricsEnabled {
+		log.Println("Metrics collection enabled - Prometheus metrics available at /metrics")
+	}
+
 	r := mux.NewRouter()
+	
+	if config.MetricsEnabled {
+		r.Use(metrics.MetricsMiddleware)
+	}
+	
 	r.HandleFunc("/health", handlers.HandleHealth).Methods("GET")
 	r.HandleFunc("/api/reforge-stones", middleware.RateLimitMiddleware(handlers.HandleReforgeStones)).Methods("GET")
 	r.HandleFunc("/api/reforges", middleware.RateLimitMiddleware(handlers.HandleReforges)).Methods("GET")
 	r.HandleFunc("/api/item/{itemId}", middleware.RateLimitMiddleware(handlers.HandleItemImage)).Methods("GET")
 	r.HandleFunc("/api/item-data/{itemId}", middleware.RateLimitMiddleware(handlers.HandleItemImageByData)).Methods("GET")
+	
+	if config.MetricsEnabled {
+		r.Handle("/metrics", metrics.GetHandler()).Methods("GET")
+	}
 
 	server := &http.Server{
 		Addr:         ":8080",

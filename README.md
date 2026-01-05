@@ -22,6 +22,8 @@
 - [API Endpoints](#api-endpoints)
 - [Data Sources](#data-sources)
 - [Common Issues](#common-issues)
+- [Docker](#docker)
+  - [Monitoring with Prometheus and Grafana](#monitoring-with-prometheus-and-grafana)
 
 ## Overview
 
@@ -139,6 +141,8 @@ Edit the `.env` file with your configuration:
 | `SKYCOFL_URL` | SkyCofl API base URL | `https://sky.coflnet.com` | No |
 | `NEU_REPO_PATH` | Path to NotEnoughUpdates repository | `NotEnoughUpdates-REPO` | No |
 | `ALLOWED_ORIGIN` | Allowed CORS origin(s). Use `*` for all origins (dev only) or specific domain(s) comma-separated for production | `*` | No |
+| `METRICS_ENABLED` | Enable Prometheus metrics collection. Set to `true` or `1` to enable | `false` | No |
+| `METRICS_IP_WHITELIST` | Optional IP whitelist for `/metrics` endpoint. Comma separated IPs or CIDR ranges (e.g., `127.0.0.1,172.18.0.0/24`). Leave empty to allow all IPs | - | No |
 
 ### Example .env File
 
@@ -156,6 +160,11 @@ NEU_REPO_PATH=NotEnoughUpdates-REPO
 # ALLOWED_ORIGIN=https://yourdomain.com,https://www.yourdomain.com
 # For development, leave as * or omit
 ALLOWED_ORIGIN=*
+
+# Optional: Enable Prometheus metrics collection
+# METRICS_ENABLED=true
+# Optional: Restrict metrics endpoint to specific IPs (comma-separated)
+# METRICS_IP_WHITELIST=127.0.0.1,172.18.0.0/24
 ```
 
 ## Development
@@ -173,8 +182,11 @@ git submodule update --init --recursive
 
 Download Go dependencies:
 ```bash
+go mod tidy
 go mod download
 ```
+
+**Note**: If you're using the monitoring features, `go mod tidy` will download the Prometheus dependencies.
 
 Run the application:
 ```bash
@@ -196,7 +208,7 @@ Returns the health status of the backend service.
 {
   "status": "ok",
   "message": "YARD Backend is running",
-  "time": "2024-01-01T12:00:00Z"
+  "time": "2026-01-01T12:00:00Z"
 }
 ```
 
@@ -211,7 +223,7 @@ Returns all stored reforge stones with their data.
 {
   "success": true,
   "count": 10,
-  "lastUpdated": "2024-01-01T12:00:00Z",
+  "lastUpdated": "2026-01-01T12:00:00Z",
   "reforgeStones": [
     {
       "id": "MANDRAA",
@@ -245,6 +257,19 @@ GET /api/item/MANDRAA
 Returns a PNG image of the specified item based on item data. Supports custom item data parameters.
 
 **Response:** PNG image (256x256 pixels)
+
+### Metrics Endpoint
+
+**GET** `/metrics`
+
+Returns Prometheus-formatted metrics. Only available when `METRICS_ENABLED=true` in your environment configuration.
+
+**Response:** Prometheus metrics in text format
+
+**Example:**
+```
+GET /metrics
+```
 
 ## Data Sources
 
@@ -369,6 +394,65 @@ The docker-compose setup includes:
 - **Backend**: API service (port 8080)
 
 The backend service automatically connects to Redis using the service name `redis` as the hostname.
+
+### Monitoring with Prometheus and Grafana
+
+The backend includes optional monitoring support with Prometheus and Grafana for tracking API metrics.
+
+#### Prerequisites
+
+1. Enable metrics in your `.env` file:
+   ```env
+   METRICS_ENABLED=true
+   ```
+
+2. Optionally restrict metrics endpoint access:
+   ```env
+   METRICS_IP_WHITELIST=127.0.0.1,172.18.0.0/24
+   ```
+
+#### Quick Start
+
+Start all services including monitoring:
+
+```bash
+docker-compose -f docker-compose.monitoring.yml up -d
+```
+
+This will start:
+- **Redis** on port 6379
+- **Backend** on port 8080
+- **Prometheus** on port 9090
+- **Grafana** on port 3001
+
+#### Accessing Monitoring
+
+- **Grafana**: http://localhost:3001
+  - Default username: `admin`
+  - Default password: `admin`
+  - Pre-configured dashboard: "YARD API Monitoring"
+- **Prometheus**: http://localhost:9090
+  - View raw metrics and query interface
+- **Metrics Endpoint**: http://localhost:8080/metrics
+  - Prometheus-formatted metrics (only available when `METRICS_ENABLED=true`)
+
+#### Available Metrics
+
+- `yard_http_requests_total` - Total HTTP requests by method, endpoint, and status code
+- `yard_http_request_errors_total` - Total HTTP errors by method, endpoint, and status code
+- `yard_http_requests_by_country_total` - Total requests by country and endpoint
+
+#### Stopping Monitoring Services
+
+```bash
+docker-compose -f docker-compose.monitoring.yml down
+```
+
+To remove monitoring data volumes:
+
+```bash
+docker-compose -f docker-compose.monitoring.yml down -v
+```
 
 ## License
 

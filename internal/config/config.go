@@ -34,9 +34,12 @@ var (
 	APIRateLimitMap         = make(map[string]time.Time)
 	APIRateLimitWindow      = 1 * time.Minute
 	APIRateLimitMaxRequests = 60
+
+	MetricsEnabled     = false
+	MetricsIPWhitelist = ""
 )
 
-// loads environment variables from env file or system environment with defaults
+// reads env vars from file or system with defaults
 func LoadEnv() {
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found, using environment variables or defaults")
@@ -56,5 +59,13 @@ func LoadEnv() {
 
 	if allowedOrigin := os.Getenv("ALLOWED_ORIGIN"); allowedOrigin != "" {
 		AllowedOrigin = allowedOrigin
+	}
+
+	if metricsEnabled := os.Getenv("METRICS_ENABLED"); metricsEnabled == "true" || metricsEnabled == "1" {
+		MetricsEnabled = true
+	}
+
+	if metricsIPWhitelist := os.Getenv("METRICS_IP_WHITELIST"); metricsIPWhitelist != "" {
+		MetricsIPWhitelist = metricsIPWhitelist
 	}
 }
