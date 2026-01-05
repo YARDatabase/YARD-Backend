@@ -308,24 +308,7 @@
           },
           "unit": "short"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "country"
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "tooltip": false,
-                  "viz": true,
-                  "legend": false
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 10,
@@ -336,10 +319,10 @@
       "id": 5,
       "options": {
         "basemap": {
-          "name": "Default base layer",
+          "name": "CartoDB Positron",
           "type": "xyz",
-          "url": "",
-          "attribution": "Bring your own tile server",
+          "url": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+          "attribution": "© <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors © <a href=\"https://carto.com/attributions\">CARTO</a>",
           "tileSize": 256
         },
         "controls": {
@@ -348,7 +331,7 @@
           "showAttribution": true,
           "showScale": false,
           "showMeasure": false,
-          "showDebug": false
+          "showDebug": true
         },
         "layers": [
           {
@@ -357,9 +340,9 @@
               "style": {
                 "size": {
                   "field": "Value",
-                  "fixed": 5,
-                  "min": 2,
-                  "max": 15
+                  "fixed": 8,
+                  "min": 5,
+                  "max": 30
                 },
                 "fillColor": {
                   "field": "Value",
@@ -368,7 +351,7 @@
                 "color": {
                   "fixed": "dark-red"
                 },
-                "opacity": 0.4,
+                "opacity": 0.7,
                 "symbol": {
                   "fixed": "",
                   "mode": "fixed"
@@ -400,24 +383,7 @@
           "refId": "A"
         }
       ],
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true
-            },
-            "indexByName": {
-              "country": 0,
-              "Value": 1
-            },
-            "renameByName": {
-              "Value": "Total Requests",
-              "country": "country"
-            }
-          }
-        }
-      ],
+      "transformations": [],
       "title": "Requests by Country",
       "type": "geomap"
     },
