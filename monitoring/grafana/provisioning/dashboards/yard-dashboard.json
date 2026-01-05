@@ -389,6 +389,7 @@
               "viz": false
             }
           },
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -414,11 +415,13 @@
         "basemap": {
           "attribution": "© <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors © <a href=\"https://carto.com/attributions\">CARTO</a>",
           "config": {
+            "server": "streets",
             "showLabels": true,
             "theme": "dark"
           },
           "name": "CartoDB Positron",
           "noRepeat": false,
+          "opacity": 1,
           "tileSize": 256,
           "type": "carto",
           "url": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
@@ -426,7 +429,7 @@
         "controls": {
           "mouseWheelZoom": true,
           "showAttribution": true,
-          "showDebug": true,
+          "showDebug": false,
           "showMeasure": false,
           "showScale": false,
           "showZoom": true
@@ -443,7 +446,7 @@
               "showLegend": false,
               "style": {
                 "color": {
-                  "field": "country",
+                  "field": "Value",
                   "fixed": "dark-red"
                 },
                 "fillColor": {
@@ -451,15 +454,31 @@
                   "fixed": "dark-green"
                 },
                 "opacity": 0.7,
+                "rotation": {
+                  "field": "Value",
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
                 "size": {
                   "field": "Value",
                   "fixed": 8,
-                  "max": 30,
+                  "max": 15,
                   "min": 5
                 },
                 "symbol": {
                   "fixed": "img/icons/marker/circle.svg",
                   "mode": "fixed"
+                },
+                "text": {
+                  "field": "Value",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "textConfig": {
+                  "textAlign": "center",
+                  "textBaseline": "middle"
                 }
               },
               "tooltip": true
@@ -478,14 +497,15 @@
           }
         ],
         "tooltip": {
-          "mode": "details"
+          "mode": "none"
         },
         "view": {
           "allLayers": true,
           "id": "coords",
-          "lat": 53.962257,
-          "lon": 12.925219,
+          "lat": 42.464984,
+          "lon": 7.219105,
           "noRepeat": false,
+          "shared": false,
           "zoom": 1.65
         }
       },
@@ -592,19 +612,16 @@
   },
   "timepicker": {
     "refresh_intervals": [
+      "1s",
+      "5s",
       "10s",
       "30s",
       "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
+      "5m"
     ]
   },
   "timezone": "browser",
   "title": "YARD API Monitoring",
   "uid": "yard-monitoring",
-  "version": 4
+  "version": 5
 }
