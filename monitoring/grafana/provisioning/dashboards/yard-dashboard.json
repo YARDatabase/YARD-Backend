@@ -516,8 +516,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "sum by(country) (yard_http_requests_by_country_total{country!=\"unknown\"})",
+          "editorMode": "code",
+          "expr": "sum by(country) (increase(yard_http_requests_by_country_total{country!='unknown'}[24h]))",
           "format": "table",
           "instant": true,
           "refId": "A"
@@ -612,7 +612,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "1s",
       "5s",
       "10s",
       "30s",
@@ -623,5 +622,5 @@
   "timezone": "browser",
   "title": "YARD API Monitoring",
   "uid": "yard-monitoring",
-  "version": 5
+  "version": 6
 }
